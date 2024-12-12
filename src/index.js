@@ -10,9 +10,7 @@ const {Repository} = require("./lib/repository")
 
 const filePath = path.resolve("database", "file.json")
 const fileRepo = new Repository(filePath)
-const imf_folder = path.resolve("database", "img-folder")
-const video_folder = path.resolve("database", "video-folder")
-const pdf_folder = path.resolve("database", "pdf-folder")
+
 
 const app = express()
 
@@ -29,7 +27,7 @@ app.post("/img-updoat", async (req, res) => {
         return res.status(400).json(new ResData(400, "bu IMG emas!"));
     }
 
-    const targetFolder = path.join(__dirname, '../database/img-folder');
+    const targetFolder = path.join(__dirname, '../files/img-folder');
     const targetPath = path.join(targetFolder, path.basename(file.name));
 
     try {
@@ -55,7 +53,7 @@ app.post("/video-updoat", async (req, res)=>{
         return res.status(400).json(new ResData(400, "bu VIDEO emas!"));
     }
 
-    const targetFolder = path.join(__dirname, '../database/video-folder');
+    const targetFolder = path.join(__dirname, '../files/video-folder');
     const targetPath = path.join(targetFolder, path.basename(file.name));
 
     try {
@@ -80,7 +78,7 @@ app.post("/pdf-updoat", async (req, res)=>{
         return res.status(400).json(new ResData(400, "bu PDF emas!"));
     }
 
-    const targetFolder = path.join(__dirname, '../database/pdf-folder');
+    const targetFolder = path.join(__dirname, '../files/pdf-folder');
     const targetPath = path.join(targetFolder, path.basename(file.name));
 
     try {
